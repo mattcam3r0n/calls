@@ -11,6 +11,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   table: {
@@ -35,6 +36,7 @@ export default function Positions() {
             <TableCell>Ticker</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Price</TableCell>
+            <TableCell align="right">Earnings Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -45,6 +47,7 @@ export default function Positions() {
               </TableCell>
               <TableCell align="right">{row.displayName}</TableCell>
               <TableCell align="right">{row.regularMarketPrice}</TableCell>
+              <TableCell align="right">{moment(new Date(row.earningsTimestamp * 1000)).format('MM/DD/YYYY')}</TableCell>
             </TableRow>
           ))}
         </TableBody>
