@@ -1,12 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
+import Positions from './features/positions/Positions'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Positions />
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
