@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     getPositions
@@ -20,12 +20,13 @@ const useStyles = makeStyles({
 });
 
 export default function Positions() {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const classes = useStyles();
   const positions = useSelector(state => state.positions?.items);
 
   useEffect(() => {
-      dispatch(getPositions());
+    dispatch(getPositions());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
