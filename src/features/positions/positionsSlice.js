@@ -45,7 +45,9 @@ export const positionsSlice = createSlice({
 export const getPositions = () => async (dispatch, getState) => {
     try {
         dispatch(getPositionsStart());
+        console.log('about to fetchPos');
         const results = await fetchPositions();
+        console.log('results', results);
         dispatch(getPositionsSuccess(results.data));
         return results.data;
     } catch (ex) {
