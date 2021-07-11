@@ -2,34 +2,53 @@ import axios from 'axios';
 
 const mockData = [
   {
-    symbol: 'MSFT',
-    displayName: "Microsoft",
-    // earningsTimestamp: 1619539681,
-    regularMarketPrice: 270.9,
+    symbol: 'WBA',
+    expireDate: '2021-07-16T00:00',
+    strike: 55.0,
+    optionType: 'C',
+    entryPremium: .5,
+    entryDelta: .21,
+    costBasis: 54.86
   },
   {
-    symbol: 'SBUX',
-    displayName: "Starbucks",
-    // earningsTimestamp: 1619539681,
-    regularMarketPrice: 270.9,
+    symbol: 'TGT',
+    expireDate: '2021-07-16T00:00',
+    strike: 252.50,
+    optionType: 'C',
+    entryPremium: .56,
+    entryDelta: .11,
+    costBasis: 67.76
   },
   {
-    symbol: 'TGT'
+    symbol: 'CVX',
+    expireDate: '2021-07-16T00:00',
+    strike: 112.0,
+    optionType: 'C',
+    entryPremium: .26,
+    entryDelta: .09,
+    costBasis: 89.4
   },
-  {
-    symbol: 'CVX'
-  },
-  {
-    symbol: 'TGT210716C00252500'
-  }
+  // {
+  //   symbol: 'TGT210716C00252500'
+  // }
 ];
 
 export async function fetchPositions() {
   try {
+    const positions = mockData;
     const symbols = mockData.map(d => d.symbol);
     const quotes = await fetchQuotes(symbols);
+    const quoteMap = quotes.reduce((map, quote) => ({
+      ...map,
+      [quote.symbol]: quote
+    }), {});
+    const positionsAndQuotes = positions.map(p => ({
+      ...p,
+      quote: quoteMap[p.symbol]
+    }));
+
     return {
-      data: quotes
+      data: positionsAndQuotes
     };
   } catch(ex) {
     console.log(ex);

@@ -36,6 +36,10 @@ export default function Positions() {
           <TableRow>
             <TableCell>Ticker</TableCell>
             <TableCell align="right">Description</TableCell>
+            <TableCell align="right">Expire Date</TableCell>
+            <TableCell align="right">Strike Price</TableCell>
+            <TableCell align="right">Premium</TableCell>
+            <TableCell align="right">Delta</TableCell>
             <TableCell align="right">Price</TableCell>
             <TableCell align="right">Earnings Date</TableCell>
           </TableRow>
@@ -46,9 +50,13 @@ export default function Positions() {
               <TableCell component="th" scope="row">
                 {row.symbol}
               </TableCell>
-              <TableCell align="right">{row.displayName}</TableCell>
-              <TableCell align="right">{row.regularMarketPrice}</TableCell>
-              <TableCell align="right">{moment(new Date(row.earningsTimestamp * 1000)).format('MM/DD/YYYY')}</TableCell>
+              <TableCell align="right">{row?.quote?.displayName ?? row?.quote?.shortName}</TableCell>
+              <TableCell align="right">{moment(new Date(row?.expireDate)).format('MM/DD/YYYY')}</TableCell>
+              <TableCell align="right">{row?.strike}</TableCell>
+              <TableCell align="right">{row?.entryPremium}</TableCell>
+              <TableCell align="right">{row?.entryDelta}</TableCell>
+              <TableCell align="right">{row?.quote?.regularMarketPrice}</TableCell>
+              <TableCell align="right">{moment(new Date(row?.quote?.earningsTimestamp * 1000)).format('MM/DD/YYYY')}</TableCell>
             </TableRow>
           ))}
         </TableBody>
