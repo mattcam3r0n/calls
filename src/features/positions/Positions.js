@@ -41,6 +41,7 @@ export default function Positions() {
             <TableCell align="right">Premium</TableCell>
             <TableCell align="right">Delta</TableCell>
             <TableCell align="right">Price</TableCell>
+            <TableCell align="right">Dividend Date</TableCell>
             <TableCell align="right">Earnings Date</TableCell>
           </TableRow>
         </TableHead>
@@ -56,6 +57,7 @@ export default function Positions() {
               <TableCell align="right">{row?.entryPremium}</TableCell>
               <TableCell align="right">{row?.entryDelta}</TableCell>
               <TableCell align="right">{row?.quote?.regularMarketPrice}</TableCell>
+              <TableCell align="right">{moment(new Date(row?.quote?.dividendDate * 1000)).format('MM/DD/YYYY')}</TableCell>
               <TableCell align="right">{moment(new Date(row?.quote?.earningsTimestamp * 1000)).format('MM/DD/YYYY')}</TableCell>
             </TableRow>
           ))}

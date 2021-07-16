@@ -28,6 +28,36 @@ const mockData = [
     entryDelta: .09,
     costBasis: 89.4
   },
+  {
+    symbol: 'SJM'
+  },
+  {
+    symbol: 'CSCO'
+  },
+  {
+    symbol: 'SBUX'
+  },
+  {
+    symbol: 'AAPL'
+  },
+  {
+    symbol: 'KMI'
+  },
+  {
+    symbol: 'VZ'
+  },
+  {
+    symbol: 'MDT'
+  },
+  {
+    symbol: 'PG'
+  },
+  {
+    symbol: 'ED'
+  }, 
+  {
+    symbol: 'QCOM'
+  }
   // {
   //   symbol: 'TGT210716C00252500'
   // }

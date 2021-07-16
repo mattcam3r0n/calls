@@ -1,0 +1,31 @@
+Collections (containers)
+* Tickers - tickers of interest, their key data
+  * symbol, ex div date, earnings date, etc
+* Positions - shares held, cost basis, etc
+  * symbol, shares, cost basis, etc
+* Trades - call trades 
+
+updateTickers
+* check for tickers in need of update
+* spawn updateTicker requests
+* run once a day or so?
+  * find tickers needing updating, take the first (or first few), update it/them. the rest will gradually fill in
+  * only call if in need of update... use queue?
+        Trigger updateTicker when:
+        * currentDate > exDivDate
+        * currentDate > earningsDate
+  * in order to limit calls to api
+
+updateTicker(symbol)
+* fetch summaryDetail, calendarEvents from yahoo-finance api
+* update relevant fields
+* record timestamp of last update 
+
+
+getTickers - gets list of tickers followed
+getQuotes - gets latest prices
+getStockPositions - stock positions
+getOptionPositions - active option positions, joined with stock position data 
+
+
+
