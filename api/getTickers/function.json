@@ -1,0 +1,28 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "tickers",
+      "type": "cosmosDB",
+      "direction": "in",
+      "databaseName": "covered-calls",
+      "collectionName": "tickers",
+      "sqlQuery": "SELECT * from c",
+      "connectionStringSetting": "CosmosDBConnection"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
