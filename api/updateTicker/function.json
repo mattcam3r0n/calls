@@ -1,0 +1,28 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "ticker",
+      "type": "cosmosDB",
+      "databaseName": "covered-calls",
+      "collectionName": "tickers",
+      "createIfNotExists": false,
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "out"
+    },    
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
