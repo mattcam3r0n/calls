@@ -9,18 +9,21 @@ module.exports = async function (context, req) {
         modules: ['price', 'summaryDetail', 'calendarEvents']
     });
 
-    context.bindings.ticker = JSON.stringify({
+    const ticker = {
         id: symbol,
         symbol,
         ...result.summaryDetail,
         ...result.price,
         dividendDate: result.calendarEvents.dividendDate,
-        earningsDate: new Date(result.calendarEvents.earnings.earningsDate[0] * 1000).toISOString()
-    });
+        earningsDate: new Date(result.calendarEvents.earnings.earningsDate[0] * 1000).toISOString(),
+        updatedDate: new Date().toISOString()
+    };
+
+    context.bindings.ticker = JSON.stringify(ticker);
 
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: context.bindings.ticker
+        body: ticker
     };
     context.done();
 }
